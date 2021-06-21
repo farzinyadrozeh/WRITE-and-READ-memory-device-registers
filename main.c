@@ -79,15 +79,17 @@ int main(void)
         printf("file size is %ld\n",sb.st_size);
     }
 
-    // gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    gpio_addr = mmap(NULL, sb.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
-    // if (gpio_addr == MAP_FAILED)
-    // {
-    //     handle_error("mmap");
-    // }
-    // else{
-        
-    // }
+    if (gpio_addr == MAP_FAILED)
+    {
+        handle_error("mmap");
+    }
+    else{
+        printf("memory is open");
+    }
+
+
 
     // gpio_value = gpio_addr;
     // &gpio_direction = gpio_addr +4;
