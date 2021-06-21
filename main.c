@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <sys/mman.h>
 #include <fcntl.h>
-#include <syc/types.h>
-#include <syc/stat.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 
@@ -76,7 +76,7 @@ int main(void)
         exit(fd);
     }
     else{
-        printf("file size is %ld\n",sb.st_size)
+        printf("file size is %ld\n",sb.st_size);
     }
 
     // gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
