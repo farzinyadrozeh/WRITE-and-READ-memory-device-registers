@@ -17,14 +17,12 @@
 #define _PIOD_BANK_D                            0xA00
 
 #define _PIO_OFFSET                             0xFF000008
-
-
 /* When executing this on the board :
     long sz = sysconf(_SC_PAGESIZE);
     printf("%ld\n\r",sz);
    We have 4096.
 // */
-#define _MAP_SIZE                           0x0020  // 4096
+#define _MAP_SIZE                           0x1000  // 4096
 
 // #define _WPMR_OFFSET                        0x0E4   // PIO Write Protection Mode Register Bank D
 
@@ -60,8 +58,8 @@
 int main(void)
 {
     volatile void *gpio_addr;
-    volatile unsigned int  *gpio_value;
-    volatile unsigned int *gpio_direction;
+    volatile unsigned int  gpio_value;
+    volatile unsigned int gpio_direction;
     
     // volatile unsigned int *gpio_output_mode_addr;
     // volatile unsigned int *gpio_output_set_addr;
@@ -69,28 +67,30 @@ int main(void)
     // volatile unsigned int *gpio_data_status_addr;
     // volatile unsigned int *gpio_write_protection_addr;
 
-    int fd = open("/dev/mem", O_RDWR | O_SYNC);
-    struct stat sb;
-    if (fd < 0)
-    {
-        fprintf(stderr, "Unable to open port\n\r");
-        exit(fd);
-    }
-    else{
-        printf("file size is %ld\n",sb.st_size);
-    }
+    // int fd = open("/dev/mem", O_RDWR | O_SYNC);
+    // struct stat sb;
+    // if (fd < 0)
+    // {
+    //     fprintf(stderr, "Unable to open port\n\r");
+    //     exit(fd);
+    // }
+    // else{
+    //     printf("file size is %ld\n",sb.st_size);
+    // }
 
-    gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
+    // gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
 
-    if (gpio_addr == MAP_FAILED)
-    {
-        handle_error("mmap");
-    }
-    else{
-        printf("memory is open");
-    }
-
-
+    // if (gpio_addr == MAP_FAILED)
+    // {
+    //     handle_error("mmap");
+    // }
+    // else{
+    //     printf("memory is open");
+    // }
+     &gpio_direction=0xFF000000+0x0004;
+     gpio_direction=0xFFFFFFFF;
+     &gpio_value=0xFF000000;
+     gpio_value=0xFFFFFFFF;
 
     // gpio_value = gpio_addr;
     // &gpio_direction = gpio_addr +4;
