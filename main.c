@@ -18,12 +18,13 @@
 
 #define _PIO_OFFSET                             0xFF000008
 
+
 /* When executing this on the board :
     long sz = sysconf(_SC_PAGESIZE);
     printf("%ld\n\r",sz);
    We have 4096.
 // */
-#define _MAP_SIZE                           8  // 4096
+#define _MAP_SIZE                           0x0020  // 4096
 
 // #define _WPMR_OFFSET                        0x0E4   // PIO Write Protection Mode Register Bank D
 
@@ -79,7 +80,7 @@ int main(void)
         printf("file size is %ld\n",sb.st_size);
     }
 
-    gpio_addr = mmap(NULL, sb.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
 
     if (gpio_addr == MAP_FAILED)
     {
