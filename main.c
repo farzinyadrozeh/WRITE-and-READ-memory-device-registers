@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <sys/mman.h>
 #include <fcntl.h>
+#include <syc/types.h>
+#include <syc/stat.h>
+#include <unistd.h>
+
 
 #define handle_error(msg)   \
     do                      \
@@ -57,7 +61,7 @@ int main(void)
     volatile void *gpio_addr;
     volatile unsigned int  *gpio_value;
     volatile unsigned int *gpio_direction;
-
+    
     // volatile unsigned int *gpio_output_mode_addr;
     // volatile unsigned int *gpio_output_set_addr;
     // volatile unsigned int *gpio_output_clear_addr;
@@ -65,27 +69,31 @@ int main(void)
     // volatile unsigned int *gpio_write_protection_addr;
 
     int fd = open("/dev/mem", O_RDWR | O_SYNC);
+    struct stat sb;
     if (fd < 0)
     {
         fprintf(stderr, "Unable to open port\n\r");
         exit(fd);
     }
-
-    gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-
-    if (gpio_addr == MAP_FAILED)
-    {
-        handle_error("mmap");
-    }
     else{
-        
+        printf("file size is %ld\n",sb.st_size)
     }
 
-    gpio_value = gpio_addr;
-    &gpio_direction = gpio_addr +4;
+    // gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+
+    // if (gpio_addr == MAP_FAILED)
+    // {
+    //     handle_error("mmap");
+    // }
+    // else{
+        
+    // }
+
+    // gpio_value = gpio_addr;
+    // &gpio_direction = gpio_addr +4;
     
-    gpio_direction = 1;
-    gpio_value = 1;
+    // gpio_direction = 1;
+    // gpio_value = 1;
 
     // gpio_enable_addr = _PIO_Value;
     // gpio_enable_addr = gpio_addr + _PIOD_BANK_D + _PIO_ENABLE;
