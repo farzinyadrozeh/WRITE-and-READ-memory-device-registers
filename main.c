@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/mman.h>
+// #include <sys/mman.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -58,8 +58,8 @@
 int main(void)
 {
     volatile void *gpio_addr;
-    volatile unsigned int  gpio_value;
-    volatile unsigned int gpio_direction;
+    volatile unsigned int  *gpio_value = (int *)0xFF000000;
+    volatile unsigned int *gpio_direction = (int *)0xFF000004;
     
     // volatile unsigned int *gpio_output_mode_addr;
     // volatile unsigned int *gpio_output_set_addr;
@@ -87,9 +87,9 @@ int main(void)
     // else{
     //     printf("memory is open");
     // }
-     &gpio_direction=0xFF000000+0x0004;
+    //  &gpio_direction=0xFF000000+0x0004;
      gpio_direction=0xFFFFFFFF;
-     &gpio_value=0xFF000000;
+     //&gpio_value=0xFF000000;
      gpio_value=0xFFFFFFFF;
 
     // gpio_value = gpio_addr;
