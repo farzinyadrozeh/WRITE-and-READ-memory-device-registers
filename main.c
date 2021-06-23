@@ -58,10 +58,10 @@
 int main(void)
 {
     volatile void *gpio_addr;
-    volatile unsigned int  *gpio_value = (unsigned int *)0xFF000000;
-    volatile unsigned int *gpio_direction = (unsigned int *)0xFF000004;
-    volatile unsigned int *gpio_function_select  = (unsigned int *)0xFF000008;
-    volatile unsigned int *gpio_read  = 0xFF0000E0;
+    volatile unsigned int  *gpio_value ;
+    volatile unsigned int *gpio_direction ;
+    volatile unsigned int *gpio_function_select;
+    volatile unsigned int *gpio_read ;
 
     
     // volatile unsigned int *gpio_output_mode_addr;
@@ -91,13 +91,18 @@ int main(void)
     //     printf("memory is open");
     // }
     //  &gpio_direction=0xFF000000+0x0004;
-   
+
+    gpio_value = 0xFF000000;
+    gpio_direction =0xFF000004;
+    gpio_function_select  = 0xFF000008;
+    gpio_read  = 0xFF0000E0;
+
     printf("Offset: %x\n", gpio_read);
     printf("Offset: %x\n", &gpio_read);
 
-    gpio_function_select = 0b0000000000000000;
-    gpio_direction=0b0000000000000000;
-    gpio_value=0x0000;//0b0000000000000000;
+    *gpio_function_select = 0b0000000000000000;
+    *gpio_direction=0b0000000000000000;
+    *gpio_value=0x0000;//0b0000000000000000;
 
 
     return 0;
