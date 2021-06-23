@@ -58,9 +58,9 @@
 int main(void)
 {
     volatile void *gpio_addr;
-    volatile unsigned int  *gpio_value = (int *)0xFF000000;
-    volatile unsigned int *gpio_direction = (int *)0xFF000004;
-    volatile unsigned int *gpio_function_select  = (int *)0xFF000008;
+    volatile unsigned int  *gpio_value = (unsigned int *)0xFF000000;
+    volatile unsigned int *gpio_direction = (unsigned int *)0xFF000004;
+    volatile unsigned int *gpio_function_select  = (unsigned int *)0xFF000008;
 
     
     // volatile unsigned int *gpio_output_mode_addr;
@@ -90,40 +90,11 @@ int main(void)
     //     printf("memory is open");
     // }
     //  &gpio_direction=0xFF000000+0x0004;
+
     gpio_function_select = 0b0000000000000000;
     gpio_direction=0b0000000000000000;
-     //printf("memory is open");
-     //&gpio_value=0xFF000000;
-     gpio_value=0xFFFF;//0b0000000000000000;
+    gpio_value=0x0000;//0b0000000000000000;
 
-    // gpio_value = gpio_addr;
-    // &gpio_direction = gpio_addr +4;
-    
-    // gpio_direction = 1;
-    // gpio_value = 1;
-
-    // gpio_enable_addr = _PIO_Value;
-    // gpio_enable_addr = gpio_addr + _PIOD_BANK_D + _PIO_ENABLE;
-
-    // gpio_output_mode_addr = gpio_addr + _PIOD_BANK_D + _OUTPUT_ENABLE;
-
-    // gpio_output_set_addr = gpio_addr + _PIOD_BANK_D + _OUTPUT_DATA_SET;
-
-    // gpio_output_clear_addr = gpio_addr + _PIOD_BANK_D + _OUTPUT_DATA_CLEAR;
-
-    // gpio_data_status_addr = gpio_addr + _PIOD_BANK_D + _OUTPUT_DATA_STATUS;
-
-    // *gpio_write_protection_addr = _DISABLE_WRITE_PROTECTION;
-
-    // *gpio_enable_addr = 1 << LED_PIN;
-    // *gpio_output_mode_addr = 1 << LED_PIN; // Output
-
-    // // If LED
-    // if((*gpio_data_status_addr & (1<<LED_PIN)) > 0){
-    //     *gpio_output_clear_addr = 1 << LED_PIN;
-    // }else{
-    //     *gpio_output_set_addr = 1 << LED_PIN;
-    // }
 
     return 0;
 }
