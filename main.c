@@ -61,7 +61,7 @@ int main(void)
     volatile unsigned int  *gpio_value = (unsigned int *)0xFF000000;
     volatile unsigned int *gpio_direction = (unsigned int *)0xFF000004;
     volatile unsigned int *gpio_function_select  = (unsigned int *)0xFF000008;
-    volatile unsigned int *gpio_read  = (unsigned int *)0xFF0000E0;
+    volatile unsigned int *gpio_read  = 0xFF0000E0;
 
     
     // volatile unsigned int *gpio_output_mode_addr;
