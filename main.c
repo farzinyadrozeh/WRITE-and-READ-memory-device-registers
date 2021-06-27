@@ -83,13 +83,13 @@ int main(void)
 
      gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
 
-    // if (gpio_addr == MAP_FAILED)
-    // {
-    //     handle_error("mmap");
-    // }
-    // else{
-    //     printf("memory is open");
-    // }
+    if (gpio_addr == MAP_FAILED)
+    {
+        handle_error("mmap");
+    }
+    else{
+        printf("memory is open");
+    }
     //  &gpio_direction=0xFF000000+0x0004;
 
     gpio_value = 0xFF000000;
