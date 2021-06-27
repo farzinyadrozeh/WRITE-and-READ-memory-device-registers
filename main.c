@@ -16,7 +16,7 @@
 
 #define _PIOD_BANK_D                            0xA00
 
-#define _PIO_OFFSET                             0xFF000008
+#define _PIO_OFFSET                             0xFF000000
 /* When executing this on the board :
     long sz = sysconf(_SC_PAGESIZE);
     printf("%ld\n\r",sz);
