@@ -70,18 +70,18 @@ int main(void)
     // volatile unsigned int *gpio_data_status_addr;
     // volatile unsigned int *gpio_write_protection_addr;
 
-    // int fd = open("/dev/mem", O_RDWR | O_SYNC);
-    // struct stat sb;
-    // if (fd < 0)
-    // {
-    //     fprintf(stderr, "Unable to open port\n\r");
-    //     exit(fd);
-    // }
-    // else{
-    //     printf("file size is %ld\n",sb.st_size);
-    // }
+    int fd = open("/dev/mem", O_RDWR | O_SYNC);
+    struct stat sb;
+    if (fd < 0)
+    {
+        fprintf(stderr, "Unable to open port\n\r");
+        exit(fd);
+    }
+    else{
+        printf("file size is %ld\n",sb.st_size);
+    }
 
-    // gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
+     gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
 
     // if (gpio_addr == MAP_FAILED)
     // {
