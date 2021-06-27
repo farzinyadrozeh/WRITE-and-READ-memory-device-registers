@@ -16,13 +16,13 @@
 
 #define _PIOD_BANK_D                            0xA00
 
-#define _PIO_OFFSET                             0xFF000000
+#define _PIO_OFFSET                             0x00000000
 /* When executing this on the board :
     long sz = sysconf(_SC_PAGESIZE);
     printf("%ld\n\r",sz);
    We have 4096.
 // */
-#define _MAP_SIZE                           0x1000  // 4096
+#define _MAP_SIZE                           0xFFFFFFFF // 4096
 
 // #define _WPMR_OFFSET                        0x0E4   // PIO Write Protection Mode Register Bank D
 
