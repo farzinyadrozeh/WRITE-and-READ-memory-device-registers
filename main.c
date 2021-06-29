@@ -70,35 +70,35 @@ int main(void)
     // volatile unsigned int *gpio_data_status_addr;
     // volatile unsigned int *gpio_write_protection_addr;
 
-    int fd = open("/dev/mem", O_RDWR | O_SYNC);
-    struct stat sb;
-    if (fd < 0)
-    {
-        fprintf(stderr, "Unable to open port\n\r");
-        exit(fd);
-    }
-    else{
-        printf("file size is %ld\n",sb.st_size);
-    }
+    // int fd = open("/dev/mem", O_RDWR | O_SYNC);
+    // struct stat sb;
+    // if (fd < 0)
+    // {
+    //     fprintf(stderr, "Unable to open port\n\r");
+    //     exit(fd);
+    // }
+    // else{
+    //     printf("file size is %ld\n",sb.st_size);
+    // }
 
-     gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
+    //  gpio_addr = mmap(NULL, _MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, _PIO_OFFSET);
 
-    if (gpio_addr == MAP_FAILED)
-    {
-        handle_error("mmap");
-    }
-    else{
-        printf("memory is open");
-    }
+    // if (gpio_addr == MAP_FAILED)
+    // {
+    //     handle_error("mmap");
+    // }
+    // else{
+    //     printf("memory is open");
+    // }
     //  &gpio_direction=0xFF000000+0x0004;
 
     gpio_value = 0xFF000000;
     gpio_direction =0xFF000004;
     gpio_function_select  = 0xFF000008;
-    gpio_read  = 0xFF0000E0;
+    //gpio_read  = 0xFF0000E0;
 
-    printf("Offset: %x\n", gpio_read);
-    printf("Offset: %x\n", &gpio_read);
+    // printf("Offset: %x\n", gpio_read);
+    // printf("Offset: %x\n", &gpio_read);
 
     *gpio_function_select = 0b0000000000000000;
     *gpio_direction=0b0000000000000000;
